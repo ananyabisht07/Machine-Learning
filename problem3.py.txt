@@ -1,5 +1,5 @@
 import pandas as pd
-import matplotlib.pyplot as mlt
+import matplotlib.pyplot as plt
 df=pd.read_csv('student.csv')
 Stu_marks=df['Marks']
 Stu_name=df['Student_name']

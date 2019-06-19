@@ -1,8 +1,8 @@
 import pandas as pd
-import matplotlib.pyplot as mlt
 import matplotlib.pyplot as plt
-df=pd.read_csv('com.csv')
+df=pd.read_csv('student.csv')
 Stu_marks=df['Marks']
 Stu_name=df['Student_name']
-plt.pie(Stu_marks,labels=Stu_name,autopct='%1.1f%%')
+plt.pie(Stu_marks,labels=Stu_name,autopct='%1.1f%%',shadow=True)
+plt.title("Performance of students according to their marks")
 plt.show()

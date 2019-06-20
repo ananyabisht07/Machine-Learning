@@ -27,7 +27,5 @@ for word, count in word_count.most_common(20):
 	print('%s:%d' %(word,count))
 	word1.append(word)
 	count1.append(count)
-print(word1)
-print(count1)
-plt.pie(count1,labels=word1) 
+plt.pie(count1,labels=word1,autopct='%1.1f%%') 
 plt.show()

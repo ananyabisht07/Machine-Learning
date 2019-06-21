@@ -32,7 +32,7 @@ for i in word_count:
     word2.append(i)
     count2.append(word_count[i])
 
-plt.subplot(2,2,1)
+plt.figure()
 plt.xlabel("words that appear more then 3 times")
 plt.ylabel("No of times the word appear")
 plt.grid(color='green')
@@ -43,12 +43,12 @@ for word, count in word_count.most_common(20):
 	word1.append(word)
 	count1.append(count)
 
-plt.subplot(2,2,2)  
+plt.figure()  
 plt.xlabel("Top 20 repeated words")
 plt.ylabel("No of times the word is repeated")
 plt.bar(word1,count1)
 
-plt.subplot(2,2,3)  	
+plt.figure()  	
 plt.pie(count1,labels=word1,autopct='%1.1f%%') 
 
 plt.show()

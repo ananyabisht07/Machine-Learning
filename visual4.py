@@ -12,9 +12,9 @@ for i in range(0,20):
 with open("webdata.txt",'w') as f:
 	for i in textcontent:
 		f.write('%s' % i)
-f=open("webdata.txt",'r')
+f=open("webdata.txt",'r')  #open the file in read mode
 data=f.read()
-num_words=len(data.split())
+num_words=len(data.split()) #counts the number of words in the scraped data
 print("Number of words:",num_words)
 
 
@@ -23,9 +23,32 @@ with open("webdata.txt",'r') as f:
 word_count=Counter(list1)
 word1=[]
 count1=[]
+word2=[]
+count2=[]
+
+#this for loop will fetch the word which are repeated more then 3 times
+for i in word_count:       
+  if word_count[i]>=4:
+    word2.append(i)
+    count2.append(word_count[i])
+
+plt.subplot(2,2,1)
+plt.xlabel("words that appear more then 3 times")
+plt.ylabel("No of times the word appear")
+plt.grid(color='green')
+plt.scatter(word2,count2)
+
+#this loop will fetch the top 20 repeated words
 for word, count in word_count.most_common(20): 
-	print('%s:%d' %(word,count))
 	word1.append(word)
 	count1.append(count)
+
+plt.subplot(2,2,2)  
+plt.xlabel("Top 20 repeated words")
+plt.ylabel("No of times the word is repeated")
+plt.bar(word1,count1)
+
+plt.subplot(2,2,3)  	
 plt.pie(count1,labels=word1,autopct='%1.1f%%') 
+
 plt.show()

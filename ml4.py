@@ -8,10 +8,10 @@ Original file is located at
 """
 
 from sklearn.datasets import load_iris                          #  loading  iris  data set
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.neighbors import KNeighborsClassifier              #loading K-NN classifier
+from sklearn.metrics import accuracy_score                      #loading function to calculate accuracy
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import load_breast_cancer                 #loading breast cancer dataset
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split            #  seperate data  into  training  and  testing
 
@@ -57,10 +57,13 @@ print('Accuracy score of decision tree for breast cancer:',acc3)
 print('Accuracy score of K-NN for breast cancer:',acc4)
 
 
+#loading canser data into a variable
 cancer=load_breast_cancer()
 
+#cancer data attributes
 cancer_data=cancer.data
 
+#answers/labels...which are exactly same in number as features
 labels=cancer.target
 
 train_data2,train_test2,label_data2,label_test2=train_test_split(cancer_data,labels,test_size=0.3)
@@ -83,7 +86,7 @@ acc4=accuracy_score(label_test2,predicted4)
 
 
 
-
+#Pie chart for the comparison of actual score of iris and breast datasets under knn and decision tree classifier
 x=[acc1,acc2,acc3,acc4]
 y=['K-NN for iris','Decision_tree for iris','Decision_tree for cancer','K-NN for cancer']
 plt.pie(x,labels=y,autopct='%1.1f%%')

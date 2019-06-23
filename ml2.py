@@ -7,48 +7,54 @@ Original file is located at
     https://colab.research.google.com/drive/13ATDVg3cXkDOCdaZdoXi2YydbC_SKRvg
 """
 
-from sklearn.datasets import load_iris
+from sklearn.datasets import load_iris                          #  loading  iris  data set
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split            #  seperate data  into  training  and  testing
 
-dir(load_iris())
-
+# loading  into a variable
 iris_data=load_iris()
 
+#   data with  attributes 
 feature=iris_data.data
 
+#  extracting  lable as per  features
 label=iris_data.target
 
-from sklearn.model_selection import train_test_split
-
+#sepearting data into four parts---test size is 30% 
 train_data,train_test,label_data,label_test=train_test_split(feature,label,test_size=0.3)
 
-from sklearn.neighbors import KNeighborsClassifier
+#calling K-nearest neighbor classifier with k=7
+kclf=KNeighborsClassifier(n_neighbors=7)
 
-kclf=KNeighborsClassifier(n_neighbors=8)
-
+# applying  training  data for k-nn 
 trained=kclf.fit(train_data,label_data)
 
+#now time for  prediction for k-nn
 predicted=trained.predict(train_test)
 
-from sklearn.metrics import accuracy_score
-
+#calculating accuracy score of K-NN
 acc1=accuracy_score(label_test,predicted)
-acc1
 
-from sklearn.tree import DecisionTreeClassifier
-
+#calling decision tree classifier
 dclf=DecisionTreeClassifier()
 
+# applying  training  data for dec_tree
 trained1=dclf.fit(train_data,label_data)
 
+#now time for  prediction for decision tree
 predict1=trained.predict(train_test)
 
+#calculating accuracy score of decision tree
 acc2=accuracy_score(label_test,predict1)
-acc2
 
-import matplotlib.pyplot as plt
+#plotting bar graph for the accuracy score given by both k
+
+plt.xlabel('Classifiers')
+plt.ylabel('Accuracy score')
 x=['KNN','Decision Tree']
-
 y=[acc1,acc2]
-
 plt.bar(x,y)
-
+plt.show()

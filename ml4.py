@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split            #  seperate data  into  training  and  testing
 
 # loading  into a variable
-iris_data=load_iris()
+iris_data=load_iris() 
 
 #   data with  attributes 
 feature_iris=iris_data.data
